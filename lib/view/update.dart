@@ -2,10 +2,11 @@ import 'package:crud_with_firebase_rest_api/instances/Instances.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class insert extends StatelessWidget {
-  const insert({super.key});
+class update extends StatelessWidget {
+  const update({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +35,20 @@ class insert extends StatelessWidget {
               SizedBox(height: 30.h,),
 
               Text(
-                "Enter Employe Detail...",
+                "Enter Updateable Detail...",
                 style: GoogleFonts.alegreya(
                   color: Colors.black,
                   fontSize: 30.spMin,
                 ),
               ),
-              
-              SizedBox(height: 30.h,), 
-              
+
+              SizedBox(height: 30.h,),
+
               Obx(
-                () => CircleAvatar(
+                    () => CircleAvatar(
                   child: image_pic.image_path.isEmpty ? null :
-                Image.network(image_pic.image_path.toString(),
-                  fit: BoxFit.contain,
+                  Image.network(image_pic.image_path.toString(),
+                    fit: BoxFit.contain,
                   ),
                   radius: 100.0,
                 ),
@@ -56,12 +57,12 @@ class insert extends StatelessWidget {
               SizedBox(height: 10.h,),
 
               IconButton(
-                  onPressed: (){
-                    image_pic.pic_image();
-                  },
-                  icon: Icon(Icons.camera),
+                onPressed: (){
+                  image_pic.pic_image();
+                },
+                icon: Icon(Icons.camera),
               ),
-              
+
               SizedBox(height: 30.h,),
 
               Padding(
@@ -89,9 +90,9 @@ class insert extends StatelessWidget {
                   cursorColor: Colors.black,
                   validator: (value) {
                     if(value!.isEmpty)
-                      {
-                        return "Enter  Value";
-                      }
+                    {
+                      return "Enter  Value";
+                    }
 
                   },
                 ),
@@ -141,25 +142,10 @@ class insert extends StatelessWidget {
                     ),
                     onPressed: (){
                       if(form_key.currentState!.validate())
-                        {
-                           name = name_controller.text.toString();
-                           age = int.parse(age_controller.text);
-                        }
-                      else if(image_pic.image_path.isEmpty)
-                        {
-                           print("image not Selected");
-                        }
-                      else
-                        {
-                            Map<String , dynamic> data =
-                            {
-                               "name" : name_controller.text.toString(),
-                               "age" : age_controller.text.toString(),
-                              "image_url" : image_pic.image_path,
-                            } ;
-
-                            api_post_data.post_data(api_links.end_point, data);
-                        }
+                      {
+                        name = name_controller.text.toString();
+                        age = int.parse(age_controller.text);
+                      }
                     },
                     child: Text("Submit")
                 ),

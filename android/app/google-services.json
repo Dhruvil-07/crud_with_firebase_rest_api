@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "848905820742",
+    "firebase_url": "https://firestorerestapi-70c91-default-rtdb.firebaseio.com",
+    "project_id": "firestorerestapi-70c91",
+    "storage_bucket": "firestorerestapi-70c91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848905820742:android:9b568f741bc891a5640847",
+        "android_client_info": {
+          "package_name": "com.example.crud_with_firebase_rest_api"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9QERSAHd3GZEA8K8ryyi4nbIti6FgO_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848905820742:android:833552b7313cc9d6640847",
+        "android_client_info": {
+          "package_name": "com.example.firestore_rest_api"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9QERSAHd3GZEA8K8ryyi4nbIti6FgO_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
