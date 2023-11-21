@@ -6,6 +6,7 @@ import 'package:crud_with_firebase_rest_api/repo/Api_links/Api_links.dart';
 import 'package:crud_with_firebase_rest_api/repo/Api_response_manage/Api_response_manage.dart';
 import 'package:crud_with_firebase_rest_api/status/Status.dart';
 import 'package:crud_with_firebase_rest_api/view_model/Insert_page_method/Insert_page_method.dart';
+import 'package:crud_with_firebase_rest_api/view_model/show_page_methods/show_page_methods.dart';
 import 'package:get/get.dart';
 
 
@@ -17,6 +18,9 @@ Status_condition status_condition = Get.put(Status_condition());
 
 //api post data instance
 Api_post_data api_post_data = Api_post_data();
+
+//api get data instance
+Api_get_data api_get_data = Api_get_data();
 
 //api link instance
 Api_links api_links = new Api_links();

@@ -140,25 +140,21 @@ class insert extends StatelessWidget {
                       backgroundColor: Colors.deepPurple.shade400,
                     ),
                     onPressed: (){
-                      if(form_key.currentState!.validate())
+                      if(form_key.currentState!.validate() && image_pic.image_path.isNotEmpty)
                         {
-                           name = name_controller.text.toString();
-                           age = int.parse(age_controller.text);
-                        }
-                      else if(image_pic.image_path.isEmpty)
-                        {
-                           print("image not Selected");
+                            Map<String,dynamic> data =
+                                {
+                                   'name' : name_controller.text.toString(),
+                                   'age' :  age_controller.text.toString(),
+                                   'image_url' : image_pic.image_path.toString(),
+                                };
+
+                            api_post_data.post_data(api_links.end_point, data,context);
+
                         }
                       else
                         {
-                            Map<String , dynamic> data =
-                            {
-                               "name" : name_controller.text.toString(),
-                               "age" : age_controller.text.toString(),
-                              "image_url" : image_pic.image_path,
-                            } ;
-
-                            api_post_data.post_data(api_links.end_point, data);
+                           print("Plasee enter all valus");
                         }
                     },
                     child: Text("Submit")

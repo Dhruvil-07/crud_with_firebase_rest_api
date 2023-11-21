@@ -1,4 +1,4 @@
-
+import 'dart:convert';
 import 'package:crud_with_firebase_rest_api/instances/Instances.dart';
 import 'package:crud_with_firebase_rest_api/repo/Api_response_manage/Api_response_manage.dart';
 import 'package:crud_with_firebase_rest_api/status/Status.dart';
@@ -6,6 +6,7 @@ import 'package:crud_with_firebase_rest_api/view/show.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 
 //for image picker
@@ -26,7 +27,7 @@ class Image_pic extends GetxController
                  source: ImageSource.gallery);
 
              if (picked_image != null) {
-               image_path.value = picked_image.path;
+               image_path.value = picked_image.path.toString();
                print(image_path);
              }
              else {
@@ -39,22 +40,42 @@ class Image_pic extends GetxController
      }
    }
 
-
 }
+
 
 
 class Api_post_data extends GetxController
 {
-    Future<void> post_data(String url , Map<String ,dynamic> data)  async
+    Future<void> post_data(String url , Map<String ,dynamic> data, BuildContext context)  async
     {
+
       status_condition.setRequestStatus(Status.Loading);
       var response_data = api_response_manage.post_api(url, data)
       .then((value){
         status_condition.setRequestStatus(Status.Complate);
-        Get.to(show());
+        print(value);
       })
       .onError((error, stackTrace){
         status_condition.setRequestStatus(Status.Error);
+        print(error);
+      })
+      .whenComplete((){
+        Navigator.pop(context);
       });
+
+
+
+    /*
+      var response = await http.post(
+        Uri.parse(url),
+        body: jsonEncode(data),
+      );
+
+      print(response.statusCode);
+
+     */
+
     }
+
+
 }

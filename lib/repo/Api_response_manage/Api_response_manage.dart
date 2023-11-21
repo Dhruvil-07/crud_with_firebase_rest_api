@@ -20,6 +20,10 @@ class Api_response_manage extends Api_abstract_method
          case 405 :
             throw Internet_excaption(error_msg: "No Internet");
             break;
+
+         case 404 :
+           throw Internet_excaption(error_msg: "No Internet");
+           break;
        }
     }
 
