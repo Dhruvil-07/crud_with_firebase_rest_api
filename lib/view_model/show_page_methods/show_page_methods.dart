@@ -13,6 +13,7 @@ class Api_get_data extends GetxController
 
    Future<void> get_data(String url) async
    {
+     employe_dtl.value = [];
       status_condition.setRequestStatus(Status.Loading);
       var response_data = await api_response_manage.get_api(url)
           .then((value){

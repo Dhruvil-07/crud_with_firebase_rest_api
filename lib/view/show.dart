@@ -8,23 +8,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 class show extends StatefulWidget {
   const show({super.key});
-
   @override
   State<show> createState() => _showState();
 }
 
 class _showState extends State<show> {
-
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    api_get_data.get_data(api_links.end_point);
+    api_get_data.get_data(api_links.end_point + ".json");
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
 
       appBar: AppBar(
@@ -45,7 +42,6 @@ class _showState extends State<show> {
         ],
       ),
 
-
       body: SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -62,9 +58,7 @@ class _showState extends State<show> {
                   child: Container(
                     height: 200.h,
                     width: 200.w,
-                    child: Image.network("https://cdn4.vectorstock.com/i/1000x1000/49/23/error-sign-vector-2944923.jpg",
-                     fit: BoxFit.contain,
-                    ),
+                    child: Text("error"),
                   ),
                 );
                 break;
@@ -72,9 +66,13 @@ class _showState extends State<show> {
               case Status.Complate :
                 return Obx(
                   () => ListView.builder(
-                                              itemCount: api_get_data.employe_dtl.length,
-                                              itemBuilder: (context, index) {
-                                                return Padding(
+                              itemCount: api_get_data.employe_dtl.length,
+                              itemBuilder: (context, index) {
+                                return api_get_data.employe_dtl.length == 0 ?
+                                    Center(
+                                                      child: Text("No Recored Availbale...."),
+                                                    )  :
+                                    Padding(
                                                   padding: EdgeInsets.symmetric(
                                                     horizontal: 50.sp,
                                                     vertical: 10.sp,
@@ -139,7 +137,12 @@ class _showState extends State<show> {
                                                                  children: [
 
                                                                    IconButton(
-                                                                       onPressed: (){},
+                                                                       onPressed: (){
+                                                                        api_delete_data.delete_data(
+                                                                            api_links.end_point + "${api_get_data.employe_dtl[index].id}"+".json",
+                                                                             index,
+                                                                         );
+                                                                       },
                                                                        icon: Icon(Icons.delete),
                                                                    ),
 
@@ -163,8 +166,8 @@ class _showState extends State<show> {
                                                       ),
                                                   ),
                                                 );
-                                              },
-                                            ),
+                                },
+                  ),
                 );
                 break;
             }

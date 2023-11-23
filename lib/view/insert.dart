@@ -149,7 +149,7 @@ class insert extends StatelessWidget {
                                    'image_url' : image_pic.image_path.toString(),
                                 };
 
-                            api_post_data.post_data(api_links.end_point, data,context);
+                            api_post_data.post_data(api_links.end_point + ".json", data,context);
 
                         }
                       else

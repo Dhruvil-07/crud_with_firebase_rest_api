@@ -60,21 +60,9 @@ class Api_post_data extends GetxController
         print(error);
       })
       .whenComplete((){
+        api_get_data.get_data(api_links.end_point + ".json");
         Navigator.pop(context);
       });
-
-
-
-    /*
-      var response = await http.post(
-        Uri.parse(url),
-        body: jsonEncode(data),
-      );
-
-      print(response.statusCode);
-
-     */
-
     }
 
 
